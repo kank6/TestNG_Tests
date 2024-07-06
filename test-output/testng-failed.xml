@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Custom Test Suite]">
+  <test thread-count="5" name="Calculator Parameterised Tests(failed)">
+    <classes>
+      <class name="calstests.task6.CalculatorParameterisedTest">
+        <methods>
+          <include name="testAddition2"/>
+          <include name="testSubtraction2"/>
+        </methods>
+      </class> <!-- calstests.task6.CalculatorParameterisedTest -->
+    </classes>
+  </test> <!-- Calculator Parameterised Tests(failed) -->
+</suite> <!-- Failed suite [Custom Test Suite] -->
