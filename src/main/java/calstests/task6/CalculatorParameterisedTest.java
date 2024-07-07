@@ -1,5 +1,6 @@
 package calstests.task6;
 
+import calstests.listeners.Retry;
 import com.epam.tat.module4.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -24,17 +25,24 @@ public class CalculatorParameterisedTest {
         Assert.assertEquals(result, num1-num2, "Subtraction operation failed");
     }
 
-
+    @Test(retryAnalyzer = Retry.class)
     @Parameters({"num1","num2"})
     public void testMultiplication(double num1, double num2) {
         double result = calculator.mult(num1,num2);
         Assert.assertEquals(result, num1*num2, "multiplication operation failed");
     }
 
+    @Test(retryAnalyzer = Retry.class)
+    @Parameters({"num1","num2"})
+    public void testDivision(double num1, double num2) {
+        double result = calculator.div(num1,num2);
+        Assert.assertEquals(result, num1/num2, "multiplication operation failed");
+    }
+
     @Test(dataProvider = "getadditiondata", dataProviderClass = DataProviderClass.class)
     public void testdataprovider(double num1, double num2, double res){
         double actRes = calculator.sum(num1,num2);
-        System.out.println("testdataprovider:"+actRes);
+       // System.out.println("testdataprovider:"+actRes);
         Assert.assertEquals(actRes,res,"Addition operation failed");
     }
 
