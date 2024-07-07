@@ -1,15 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Calculator Tests Suite">
+    <parameter name="num1" value="10.0"/>
+    <parameter name="num2" value="20.0"/>
     <listeners>
         <listener class-name="calstests.listeners.CustomExtentListeners"/>
     </listeners>
     <test name="Calculator Parameterized Tests">
         <classes>
             <class name="calstests.task6.CalculatorParameterisedTest">
-
-                <parameter name="num1" value="10.5"/>
-                <parameter name="num2" value="20.5"/>
-
             </class>
         </classes>
     </test>
