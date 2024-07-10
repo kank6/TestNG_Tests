@@ -1,0 +1,5 @@
+1.java.lang.AssertionError: multiplication operation failed
+  Expected :214.24
+  Actual   :214.0
+
+  2. when divide by 0 it should throw aithematic exception but it displayed NumberFormatException

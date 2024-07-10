@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Calculator Tests Suite with before and after annotaions">
+    <test name="Calculator before/after Tests">
+        <classes>
+            <class name="calstests.task1to5.CalculatorTests">
+            </class>
+        </classes>
+    </test>
+</suite>
