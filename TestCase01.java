@@ -1,4 +1,4 @@
-package org.epam;
+
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
