@@ -20,15 +20,9 @@ node {
         stage('Test') {
             // Run tests and generate JUnit XML reports
             bat 'mvn test'
-
-            // Post-build actions
-            post {
-                always {
-                    // Archive JUnit test results
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                }
-            }
         }
+
+
 
         // Stage: Package
         stage('Package') {
