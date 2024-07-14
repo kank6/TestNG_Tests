@@ -1,0 +1,45 @@
+node {
+    // Define where the pipeline should run
+
+    // Set up environment variables
+    withEnv(["PATH=C:\\Users\\Lakshmi_Arivelu\\Documents\\apache-maven-3.9.8-bin\\apache-maven-3.9.8\\bin;C:\\Windows\\system32"]) {
+
+        // Stage: Compile
+        stage('Compile') {
+            // Checkout Git repository
+            git branch: 'main', changelog: false, credentialsId: '3fb0a2fa-7a5e-4bba-9adf-a1bee39fa6c8', url: 'https://git.epam.com/lakshmi_arivelu/core-java-home-task.git'
+        }
+
+        // Stage: Build
+        stage('Build') {
+            // Execute Maven package command
+            bat 'mvn package -P ParameterisedTests'
+        }
+
+        // Stage: Test
+        stage('Test') {
+            // Run tests and generate JUnit XML reports
+            bat 'mvn test'
+
+            // Post-build actions
+            post {
+                always {
+                    // Archive JUnit test results
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                }
+            }
+        }
+
+        // Stage: Package
+        stage('Package') {
+            // Archive built artifacts (JAR files)
+            archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+        }
+
+        // Stage: Email
+        stage('Email') {
+            // Send email notification
+            emailext body: 'test results', subject: 'Jenkins pipeline report', to: 'lakshmi_arivelu@epam.com'
+        }
+    }
+}
